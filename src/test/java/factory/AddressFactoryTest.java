@@ -1,0 +1,52 @@
+/* AddressFactoryTest.java
+   AddressFactoryTest class
+   Author: 222709006 Qhama dyushu
+   Date: 21 June 2026
+*/
+package factory;
+
+import domain.Address;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AddressFactoryTest {
+
+    @Test
+    void testCreateAddressSuccess() {
+        Address address = AddressFactory.createAddress(
+                "ADDR-101",
+                "CUST-202",
+                "123 Main St",
+                "Cape Town",
+                "Western Cape",
+                "8001",
+                "South Africa",
+                "Shipping"
+        );
+
+        assertNotNull(address);
+        assertEquals("ADDR-101", address.getAddressId());
+        assertEquals("CUST-202", address.getCustomerId());
+        assertEquals("123 Main St", address.getStreetAddress());
+        assertEquals("Cape Town", address.getCity());
+        assertEquals("Western Cape", address.getState());
+        assertEquals("8001", address.getPostalCode());
+        assertEquals("South Africa", address.getCountry());
+        assertEquals("Shipping", address.getAddressType());
+    }
+
+    @Test
+    void testCreateAddressFail() {
+        Address address = AddressFactory.createAddress(
+                "",
+                "CUST-202",
+                "123 Main St",
+                "Cape Town",
+                "Western Cape",
+                "8001",
+                "South Africa",
+                "Shipping"
+        );
+        assertNull(address);
+    }
+}
